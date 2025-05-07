@@ -13,7 +13,7 @@ export const db = new Sequelize(
 
 export const initMySQLDB = async()=> {
     try {
-        await db.authenticate();
+        await db.sync({force: false});
     } catch (error) {
         throw new Error(error)
     }
