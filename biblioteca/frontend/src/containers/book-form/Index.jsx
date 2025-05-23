@@ -15,8 +15,9 @@ const BookForm = () => {
 
     useEffect(()=> {
         if(id){
-            const {data} =BookService.getById(id);
-            setFormData(data)
+            BookService.getById(id).then((response) => {
+            setFormData(response.data)
+            })
         }
     }, [id]);
 
@@ -39,7 +40,16 @@ const BookForm = () => {
     }
 
   return (
-    <div>Index</div>
+    <div>
+        <h1>{id ? 'Editar libro' : 'Nuevo libro'}</h1>
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Título"/><br/>
+            <input type="text" name='author' value={formData.author} onChange={handleChange} placeholder="Autor"/><br/>
+            <input type="text" name='description' value={formData.description} onChange={handleChange} placeholder="Descripción"/><br/>
+            <button type='submit'>Guardar</button>
+            <button type='button' onClick={()=> navigate('/')}>Cancelar</button>
+        </form>
+    </div>
   )
 }
 
