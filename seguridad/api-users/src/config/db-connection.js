@@ -8,13 +8,13 @@ export const db = new Sequelize(
     {
         host: config.DB_HOST,
         dialect: 'mysql',
-        logging: false,
+        //logging: false,
     }
 )
 
 export const initMySQLDB = async () => {
     try {
-        await db.authenticate();
+        await db.sync({ force: false });
     } catch (error) {
         throw new Error(error)
     }
