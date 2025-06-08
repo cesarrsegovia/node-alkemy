@@ -33,7 +33,7 @@ const Overview = () => {
   return (
     <div>
         <h1>Libros</h1>
-        <button onClick={()=>navigate('/fform')}>Nuevo libro</button>
+        <button onClick={()=>navigate('/form')}>Nuevo libro</button>
         <table>
             <thead>
                 <tr>
